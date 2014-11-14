@@ -30,9 +30,9 @@ def run(task):
             # strip features for any trailing items that don't appear in training set
             num_items = dataset.shape[1]
             item_features = item_features[:num_items,:]
-            recs = model.range_recommend_items(dataset,start,end,max_items=20,return_scores=True,item_features=item_features)
+            recs = model.range_recommend_items(dataset,start,end,max_items=200,return_scores=True,item_features=item_features)
         else:
-            recs = model.range_recommend_items(dataset,start,end,max_items=20,return_scores=True)
+            recs = model.range_recommend_items(dataset,start,end,max_items=200,return_scores=True)
         for u,items in zip(xrange(start,end),recs):
             for i,w in items:
                 print >>out,'{0}\t{1}\t{2}'.format(u+1,i+1,w)  # write as 1-indexed
